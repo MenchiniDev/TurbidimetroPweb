@@ -1,0 +1,43 @@
+
+header {
+  text-align: center;
+  padding: 10px;
+  font-size:26px;
+  font-weight:bold;
+}
+
+#dataSubmissionDiv{
+  margin-top:20px;
+  display: flex;
+  justify-content: center;
+}
+
+label {
+  margin-right: 10px;
+}
+
+button{
+  margin-left:10px;
+}
+
+input[type="date"],
+select {
+  margin-right: 10px;
+}
+
+#dataGraph {
+  margin-top: 20px;
+}
+
+#turbidityLineChartDiv {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+#turbidityLineChartSvg {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+
+}
