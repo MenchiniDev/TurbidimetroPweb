@@ -1,6 +1,6 @@
 <?php
-	$dbHostname = "localhost";
-	$dbUsername = "root"; 
-	$dbPassword = ""; 
-	$dbName = "turbidimetersData";	
+	$host = "localhost:3309";
+	$Username = "root"; 
+	$Password = ""; 
+	$name = "turbidimetersData";	
 ?>
