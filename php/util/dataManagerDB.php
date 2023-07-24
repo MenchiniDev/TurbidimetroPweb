@@ -24,7 +24,7 @@
 		$result = $turbidimeterDataDb->performQuery($queryText);
 		
 		$turbidimeterDataDb->closeConnection();
-		return $result;	
+		return $result;
 	}
 	
 ?>

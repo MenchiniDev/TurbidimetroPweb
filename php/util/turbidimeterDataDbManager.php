@@ -32,10 +32,10 @@
         }
     }
 
-	function isOpen(PDO $pdo) {
+	function isOpen() {
 		try {
 			// Ottieni lo stato della connessione usando l'attributo PDO::ATTR_CONNECTION_STATUS
-			$status = $pdo->getAttribute(PDO::ATTR_CONNECTION_STATUS);
+			$status = $this->db->getAttribute(PDO::ATTR_CONNECTION_STATUS);
 	
 			// Verifica se lo stato indica una connessione attiva
 			return (bool) strpos($status, 'Connected') !== false;
@@ -44,9 +44,10 @@
 			return false;
 		}
 	}
-	private function openConnection()
+	function openConnection()
     {
-        $dsn = "mysql:host={$this->host};dbname={$this->dbname};charset=utf8mb4";
+        echo $this->host . $this->name . $this->username.  $this->password;
+        $dsn = "mysql:host={$this->host};dbname={$this->name};charset=utf8mb4";
 
         $options = [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -55,7 +56,7 @@
         ];
 
         try {
-            $this->pdo = new PDO($dsn, $this->username, $this->password, $options);
+            $this->db = new PDO($dsn, $this->username, $this->password, $options);
         } catch (PDOException $e) {
             throw new Exception("Connection failed: " . $e->getMessage());
         }
@@ -63,7 +64,7 @@
 
 	public function isOpened()
     {
-        return $this->pdo !== null;
+        return $this->db != null;
     }
 
     public function performQuery($queryText)
@@ -72,20 +73,11 @@
             $this->openConnection();
         }
 
-        return $this->pdo->query($queryText);
+        return $this->db->query($queryText);
     }
 
-    public function sqlInjectionFilter($parameter)
-    {
-        if (!$this->isOpened()) {
-            $this->openConnection();
-        }
-
-        return $this->pdo->quote($parameter);
-    }
-
-	function closeConnection(PDO &$db) {
-		$db = null;
+	function closeConnection() {
+		$this->db = null;
 	}
 }
 

@@ -1,1 +1,9 @@
 https://github.com/MenchiniDev/TurbidimetroPweb.git
+
+
+per fare il push da terminale:
+	git branch per capire su quale ramo stiamo lavorando
+	git add . per caricare in locale tutte le modifiche
+	git commit -m "mess" per salvarle in locale
+	git push origin nome_ramo per salvare nel ramo remoto
+	fine

@@ -1,13 +1,14 @@
 <?php
 	require_once __DIR__ . "/php/config.php";
 	require_once DIR_UTIL . "dataManagerDB.php";	
+	require DIR_UTIL . "dbConfig.php";
 ?>
 	
 <!DOCTYPE html>
 <html lang="it">
 	<head>
         	<meta charset="utf-8">
-		<meta name="author" content="Gabriele Riccomini">
+		<meta name="author" content="Lorenzo Menchini">
 		<meta name="keywords" content="turbidimeter">
 		<link rel="stylesheet" type="text/css" href="./css/style.css" media="screen">
 		<script src="https://d3js.org/d3.v4.min.js"></script>
@@ -29,11 +30,35 @@
 			<label for="turbidimetri">Turbidimetro:</label>
 			<select id="turbidimetri" name="turbidimetri">
 			<?php
-				$result = getTurbidimeters();
-				$turbidimeters = mysqli_num_rows($result);
-				while ($row = $result->fetch_assoc()){
-					echo'<option value=' .$row['turbidimeterID'] . '>' .$row['turbidimeterID'] . '</option>';
+				global $turbidimeterDataDb;
+				if($turbidimeterDataDb->isOpen())
+				{
+					try
+					{
+						$res = getTurbidimeters();
+						while ($row = $stmt->fetch()) {
+							echo'<option value=' .$row['turbidimeterID'] . '>' .$row['turbidimeterID'] . '</option>';
+						}
+
+					}catch (PDOException $e) {
+						
+						echo "Errore: " . $e->getMessage();
+					} // poi da rimuovere
+				}else
+				{
+					$turbidimeterDataDb->openConnection();
+					try
+					{
+					$result = getTurbidimeters(); 
+					if ($result->rowCount() > 0) {
+					while ($row = $result->fetch()) {
+						echo'<option value=' .$row['turbidimeterID'] . '>' .$row['turbidimeterID'] . '</option>';
+						}
 					}
+					}catch (PDOException $e) {	
+						echo "<option>Errore: " . $e->getMessage() . "</option>";
+					} // poi da rimuovere
+				}
 			?>
 			</select>
 			<button id="visualizzaDati" onclick="LineChartHandler.onNewInterval()">Visualizza</button>
