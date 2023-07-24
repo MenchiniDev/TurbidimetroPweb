@@ -16,6 +16,7 @@
 		<script type="text/javascript" src="./js/ajax/ajaxManager.js"></script>
 		<script type="text/javascript" src="./js/ajax/LineChartHandler.js"></script>
 		<script type="text/javascript" src="./js/ajax/lineChartDataDashboard.js"></script>
+		<script type="text/javascript" src="./js/ajax/index.js"></script>
 		<title>Turbidimetri</title>
 	</head>
 	<body onLoad="LineChartHandler.onNewInterval()">
@@ -72,5 +73,6 @@
     src="https://maps.googleapis.com/maps/api/js?key=INSERT_YOUR_API_KEY&callback=initMap&v=weekly"
     defer
     ></script>
+	<div id="lateralAdd" onclick="addTurbidimetro()">aggiungi Turbidimetro +</div>
 	</body>
 </html>

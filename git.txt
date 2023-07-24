@@ -1,4 +1,5 @@
 https://github.com/MenchiniDev/TurbidimetroPweb.git
+lavora col google del vecchio
 
 
 per fare il push da terminale:
@@ -7,3 +8,6 @@ per fare il push da terminale:
 	git commit -m "mess" per salvarle in locale
 	git push origin nome_ramo per salvare nel ramo remoto
 	fine
+
+quando vedi che non ti aggiorna devi pulire la cache
+	disabilita i dati di navigazione
