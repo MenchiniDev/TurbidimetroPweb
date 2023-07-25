@@ -1,4 +1,5 @@
 document.getElementById("turbidimeterForm").addEventListener("submit", validateCoordinates);
+//document.getElementById("modifyForm").addEventListener("submit", validateCoordinates);
 
 function validateCoordinates() {
   const latitudineInput = document.getElementById('latitudine');
@@ -26,6 +27,8 @@ function validateCoordinates() {
 
 
 const addT = document.getElementById("turbidimeterForm");
+const remT = document.getElementById("removeForm");
+const modT = document.getElementById("modifyForm");
 
 addT.addEventListener("submit",(e)=>
 {
@@ -38,6 +41,58 @@ addT.addEventListener("submit",(e)=>
   formData.append('longitudine', document.getElementById("longitudine").value); 
 
   fetch("php/ajax/newTurbidimeter.php", {
+    method: 'POST',
+    body: formData
+  })
+.then(response => response.json())
+.then(data => {
+    if(!data['result']){
+      console.log("errore");
+    }
+    else{
+        console.log("tutto ok");
+    }
+});
+});
+
+remT.addEventListener("submit",(e)=>
+{
+  e.preventDefault(); // Evita il comportamento predefinito dell'invio del form
+
+  const formData = new FormData();
+  //ho dovuto costruire manualmente la form per la conversione ad intero di id
+  formData.append('identificatorerm', parseInt(document.getElementById("identificatorerm").value));
+
+  fetch("php/ajax/remTurbidimeter.php", {
+    method: 'POST',
+    body: formData
+  })
+.then(response => response.json())
+.then(data => {
+    if(!data['result']){
+      console.log("errore");
+    }
+    else{
+        console.log("tutto ok");
+    }
+});
+});
+
+modT.addEventListener("submit",(e)=>
+{
+  e.preventDefault(); // Evita il comportamento predefinito dell'invio del form
+
+  const formData = new FormData();
+  //ho dovuto costruire manualmente la form per la conversione ad intero di id
+  formData.append('identificatoremd', parseInt(document.getElementById("identificatoremd").value));
+  formData.append('latitudinemd', document.getElementById("latitudinemd").value);
+  formData.append('longitudinemd', document.getElementById("longitudinemd").value); 
+  
+  //console.log(parseInt(document.getElementById("identificatoremd").value));
+  //console.log(document.getElementById("latitudinemd").value);
+  //console.log(document.getElementById("longitudinemd").value);
+
+  fetch("php/ajax/modTurbidimeter.php", {
     method: 'POST',
     body: formData
   })

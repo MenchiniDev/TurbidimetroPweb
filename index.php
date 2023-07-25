@@ -71,7 +71,7 @@
 		</div>
 		<div id="lateralAdd" onclick="addTurbidimetro()">aggiungi Turbidimetro +</div>
 		<div>
-			<form id="turbidimeterForm">
+			<form id="turbidimeterForm" class="formT">
 				<h2>Aggiungi un Nuovo turbidimetro</h2>
 				<label for="id">id</label><br>
 				<input type="text" id="identificatore" name="identificatore" ><br>
@@ -79,6 +79,26 @@
     			<input type="text" id="latitudine" name="latitudine"><br>
     			<label for="longitudine">Longitudine:</label><br>
     			<input type="text" id="longitudine" name="longitudine" >
+				<button type="submit">Invia</button>
+			</form>
+		</div>
+		<div>
+			<form id="removeForm" class="formT1">
+				<h2>Rimuovi un turbidimetro</h2>
+				<label for="id">id</label><br>
+				<input type="text" id="identificatorerm" name="identificatorerm" ><br>
+				<button type="submit">Invia</button>
+			</form>
+		</div>
+		<div>
+			<form id="modifyForm" class="formT2">
+				<h2>modifica la posizione di un turbidimetro</h2>
+				<label for="id">id</label><br>
+				<input type="text" id="identificatoremd" name="identificatoremd"><br>
+				<label for="latitudine">Nuova latitudine:</label> <br>
+    			<input type="text" id="latitudinemd" name="latitudinemd"><br>
+    			<label for="longitudine">Nuova longitudine:</label><br>
+    			<input type="text" id="longitudinemd" name="longitudinemd" >
 				<button type="submit">Invia</button>
 			</form>
 		</div>

@@ -5,12 +5,8 @@
 	function getTurbidimeters() { //Ci fornisce i turbidimetri da inserire nel campo select
 	    global $turbidimeterDataDb;
 		$queryText = 'SELECT turbidimeterID ' 
-		               . 'FROM data '
-					   . 'GROUP BY turbidimeterID';
+		               . 'FROM turbidimeters ';
 		$result = $turbidimeterDataDb->performQuery($queryText);
-		/*while ($row = $result->fetch_assoc()){
-				echo'<option value=' .$row['turbidimeterID'] . '>' .$row['turbidimeterID'] . '</option>';
-		}*/
 		$turbidimeterDataDb->closeConnection();
 		return $result;
 	}
@@ -27,8 +23,6 @@
 		return $result;
 	}
 
-	/* ^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?) REGEXP LATITUDINE */
-	/* [-+]?((1[0-7]\d|0?\d{1,2})(\.\d+)?|180(\.0+)?)$ REGEXP LONGITUDINE*/
 	function storeTurbidimeter($turbidimeterId,$latitudine,$longitudine)
 	{
 		$try = (int)$turbidimeterId;
@@ -40,6 +34,30 @@
 		$res->bindParam(":turbidimeterID",$try);
 		$res->bindParam(":latitudine",$latitudine);
 		$res->bindParam(":longitudine",$longitudine);
+
+		return  $turbidimeterDataDb->executeStmt($res);
+	}
+
+	function removeTurbidimeter($turbidimeterId)
+	{
+		$try = (int)$turbidimeterId;
+		global $turbidimeterDataDb;
+		$queryText = "DELETE FROM Turbidimeters WHERE turbidimeterID = ". $try;
+		$res = $turbidimeterDataDb->prepareToBind($queryText);
+
+		return  $turbidimeterDataDb->executeStmt($res);
+	}
+
+	/*da implementare la modifica */
+	function modifyTurbidimeter($turbidimeterId,$latitudine,$longitudine)
+	{
+		$try = (int)$turbidimeterId;
+		$loclatitudine = (int)$latitudine;
+		$loclongitudine = (int)$longitudine;
+
+		global $turbidimeterDataDb;
+		$queryText = "UPDATE Turbidimeters SET latitudine= ".$loclatitudine.", longitudine= ".$loclongitudine."  WHERE turbidimeterID =" . $try;
+		$res = $turbidimeterDataDb->prepareToBind($queryText);
 
 		return  $turbidimeterDataDb->executeStmt($res);
 	}

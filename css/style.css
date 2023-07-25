@@ -79,11 +79,27 @@ select {
   margin-left: 20px;
 }
 
-#turbidimeterForm
+.formT
 {
   float: right;
   background-color: aliceblue;
   position: fixed;
   top: 100px;
+  left: 10vh;
+}
+.formT1
+{
+  float: right;
+  background-color: aliceblue;
+  position: fixed;
+  top: 350px;
+  left: 10vh;
+}
+.formT2
+{
+  float: right;
+  background-color: aliceblue;
+  position: fixed;
+  top: 500px;
   left: 10vh;
 }
