@@ -26,5 +26,22 @@
 		$turbidimeterDataDb->closeConnection();
 		return $result;
 	}
+
+	/* ^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?) REGEXP LATITUDINE */
+	/* [-+]?((1[0-7]\d|0?\d{1,2})(\.\d+)?|180(\.0+)?)$ REGEXP LONGITUDINE*/
+	function storeTurbidimeter($turbidimeterId,$latitudine,$longitudine)
+	{
+		$try = (int)$turbidimeterId;
+		global $turbidimeterDataDb;
+		$queryText = "INSERT INTO Turbidimeters values"
+			. "(:turbidimeterID,:latitudine,:longitudine);";
+		$res = $turbidimeterDataDb->prepareToBind($queryText);
+
+		$res->bindParam(":turbidimeterID",$try);
+		$res->bindParam(":latitudine",$latitudine);
+		$res->bindParam(":longitudine",$longitudine);
+
+		return  $turbidimeterDataDb->executeStmt($res);
+	}
 	
 ?>

@@ -11,3 +11,5 @@ per fare il push da terminale:
 
 quando vedi che non ti aggiorna devi pulire la cache
 	disabilita i dati di navigazione
+
+quando fai le promesse ajax la fetch parte sempre dalla cartella base non da quella del file in cui sei

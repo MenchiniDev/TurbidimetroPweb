@@ -35,15 +35,26 @@ select {
 }
 
 #turbidityLineChartDiv {
+  padding: 20px;
   margin-top: 20px;
   display: flex;
   justify-content: center;
 }
-
+#map
+{
+  margin-top: 20px;
+  margin-left: 20px;
+  display: flex;
+  height: 100dvi;
+  width: 100%;
+}
 #turbidityLineChartSvg {
   margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
   display: flex;
-  justify-content: center;
+  height: 50%;
+  width: 50%;
 
 }
 
@@ -66,4 +77,13 @@ select {
   transition-duration: 150ms;
   transition-timing-function: ease-out;
   margin-left: 20px;
+}
+
+#turbidimeterForm
+{
+  float: right;
+  background-color: aliceblue;
+  position: fixed;
+  top: 100px;
+  left: 10vh;
 }

@@ -16,7 +16,7 @@
 		<script type="text/javascript" src="./js/ajax/ajaxManager.js"></script>
 		<script type="text/javascript" src="./js/ajax/LineChartHandler.js"></script>
 		<script type="text/javascript" src="./js/ajax/lineChartDataDashboard.js"></script>
-		<script type="text/javascript" src="./js/ajax/index.js"></script>
+    	<script src="https://maps.googleapis.com/maps/api/js?key=INSERT_YOUR_API_KEY&callback=initMap&v=weekly"></script>
 		<title>Turbidimetri</title>
 	</head>
 	<body onLoad="LineChartHandler.onNewInterval()">
@@ -30,7 +30,7 @@
 			<input type="date" id="fineIntervallo" name="fineIntervallo" value="<?php echo date('Y-m-d'); ?>">
 			<label for="turbidimetri">Turbidimetro:</label>
 			<select id="turbidimetri" name="turbidimetri">
-			<?php
+				<?php
 				global $turbidimeterDataDb;
 				if($turbidimeterDataDb->isOpen())
 				{
@@ -40,7 +40,7 @@
 						while ($row = $stmt->fetch()) {
 							echo'<option value=' .$row['turbidimeterID'] . '>' .$row['turbidimeterID'] . '</option>';
 						}
-
+						
 					}catch (PDOException $e) {
 						
 						echo "Errore: " . $e->getMessage();
@@ -52,14 +52,14 @@
 					{
 					$result = getTurbidimeters(); 
 					if ($result->rowCount() > 0) {
-					while ($row = $result->fetch()) {
-						echo'<option value=' .$row['turbidimeterID'] . '>' .$row['turbidimeterID'] . '</option>';
+						while ($row = $result->fetch()) {
+							echo'<option value=' .$row['turbidimeterID'] . '>' .$row['turbidimeterID'] . '</option>';
 						}
 					}
-					}catch (PDOException $e) {	
-						echo "<option>Errore: " . $e->getMessage() . "</option>";
-					} // poi da rimuovere
-				}
+				}catch (PDOException $e) {	
+					echo "<option>Errore: " . $e->getMessage() . "</option>";
+				} // poi da rimuovere
+			}
 			?>
 			</select>
 			<button id="visualizzaDati" onclick="LineChartHandler.onNewInterval()">Visualizza</button>
@@ -67,12 +67,22 @@
 		</div>
 		<div id="turbidityLineChartDiv">
 			<svg id="turbidityLineChartSvg" width="1000" height="900"></svg>
+			<div id="map"></div>
 		</div>
-		<div id="map"></div>
-    <script
-    src="https://maps.googleapis.com/maps/api/js?key=INSERT_YOUR_API_KEY&callback=initMap&v=weekly"
-    defer
-    ></script>
-	<div id="lateralAdd" onclick="addTurbidimetro()">aggiungi Turbidimetro +</div>
+		<div id="lateralAdd" onclick="addTurbidimetro()">aggiungi Turbidimetro +</div>
+		<div>
+			<form id="turbidimeterForm">
+				<h2>Aggiungi un Nuovo turbidimetro</h2>
+				<label for="id">id</label><br>
+				<input type="text" id="identificatore" name="identificatore" ><br>
+				<label for="latitudine">Latitudine:</label> <br>
+    			<input type="text" id="latitudine" name="latitudine"><br>
+    			<label for="longitudine">Longitudine:</label><br>
+    			<input type="text" id="longitudine" name="longitudine" >
+				<button type="submit">Invia</button>
+			</form>
+		</div>
+	<script type="text/javascript" src="./js/index.js"></script>
 	</body>
-</html>
+	</html>
+	

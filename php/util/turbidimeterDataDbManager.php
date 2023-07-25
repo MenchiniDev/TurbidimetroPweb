@@ -79,6 +79,17 @@
 	function closeConnection() {
 		$this->db = null;
 	}
+
+    function prepareToBind($queryText)
+    {
+        $res = $this->db->prepare($queryText);
+        return $res;
+    }
+
+    function executeStmt($stmt)
+    {
+        return $stmt->execute();
+    }
 }
 
 ?>
