@@ -1,6 +1,7 @@
 document.getElementById("turbidimeterForm").addEventListener("submit", validateCoordinates);
 //document.getElementById("modifyForm").addEventListener("submit", validateCoordinates);
 
+
 function validateCoordinates() {
   const latitudineInput = document.getElementById('latitudine');
   const longitudineInput = document.getElementById('longitudine');
@@ -50,7 +51,9 @@ addT.addEventListener("submit",(e)=>
       console.log("errore");
     }
     else{
-        console.log("tutto ok");
+      window.location.replace("index.php");
+      let r = document.getElementById("notifImg");
+      r.setAttribute("src","./img/notifAlert.png");
     }
 });
 });
@@ -73,7 +76,8 @@ remT.addEventListener("submit",(e)=>
       console.log("errore");
     }
     else{
-        console.log("tutto ok");
+      let r = document.getElementById("notifImg");
+      r.setAttribute("src","./img/notifAlert.png");
     }
 });
 });
@@ -102,7 +106,8 @@ modT.addEventListener("submit",(e)=>
       console.log("errore");
     }
     else{
-        console.log("tutto ok");
+      let r = document.getElementById("notifImg");
+      r.setAttribute("src","./img/notifAlert.png");
     }
 });
 });

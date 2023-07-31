@@ -9,6 +9,7 @@ header {
 body
 {
   margin: 0px;
+  background-color: aliceblue;
 }
 
 #dataSubmissionDiv{
@@ -58,25 +59,48 @@ select {
 
 }
 
-#lateralAdd
+.lateral
 {
-  background-color: aquamarine;
   width: 300px;
   height: 50px;
-  text-align:right;
-  padding-top: 20px;
-  padding-left: 20px;
-  margin-left: -50px;
+  margin-left: -250px;
   transition-duration: 150ms;
   transition-timing-function: ease-in;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 30px;
+  font-size: 24px;
+  border: 3px solid;
+  border-radius: 5px;
+  padding: 12px;
+  margin-top: 10px;
+  position: fixed;
+  top: 150px;
+  
 }
-#lateralAdd:hover
+
+#lateralAdd:hover,#lateralRm:hover,#lateralMd:hover
 {
-  transition-duration: 150ms;
+  transition-duration: 300ms;
   transition-timing-function: ease-out;
   margin-left: 20px;
+}
+
+#lateralAdd
+{
+  border-color: rgb(8, 149, 149);
+  background-color: rgb(77, 201, 201);
+  
+}
+#lateralRm
+{
+  top: 330px;
+  border-color: rgb(8, 149, 88);
+  background-color: rgb(77, 201, 110);
+}
+#lateralMd
+{
+  top: 240px;
+  border-color: rgb(8, 97, 149);
+  background-color: rgb(77, 141, 201);
 }
 
 .formT
@@ -85,21 +109,59 @@ select {
   background-color: aliceblue;
   position: fixed;
   top: 100px;
-  left: 10vh;
+  left: 200vh;
+  border: 3px solid;
+  border-radius: 20px;
+  padding: 10px;
 }
-.formT1
+#addDiv
 {
-  float: right;
-  background-color: aliceblue;
-  position: fixed;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
   top: 350px;
-  left: 10vh;
+  border-color: rgb(8, 149, 149);
+  background-color: rgb(77, 201, 201);
 }
-.formT2
+
+#mdDiv
+{
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  top: 650px;
+  border-color: rgb(8, 97, 149);
+  background-color: rgb(77, 141, 201);
+}
+#rmDiv
+{
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  top: 150px;
+  border-color: rgb(8, 149, 88);
+  background-color: rgb(77, 201, 110);
+}
+.formT>input
+{
+  margin: 10px;
+  width: 70px;
+  height: 15px;
+}
+
+.exit
 {
   float: right;
-  background-color: aliceblue;
-  position: fixed;
-  top: 500px;
-  left: 10vh;
+  
+}
+img
+{
+  height: 50px;
+  width: 50px;
+  float: right;
+}
+
+#notifImg
+{
+  height: 40px;
+  width: 40px;
+}
+#notificheDiv
+{
+  margin-top: 20;
+  margin-right: 20px;
 }

@@ -16,6 +16,7 @@
 		<script type="text/javascript" src="./js/ajax/ajaxManager.js"></script>
 		<script type="text/javascript" src="./js/ajax/LineChartHandler.js"></script>
 		<script type="text/javascript" src="./js/ajax/lineChartDataDashboard.js"></script>
+		<script src="./js/maps.js"></script>
     	<script src="https://maps.googleapis.com/maps/api/js?key=INSERT_YOUR_API_KEY&callback=initMap&v=weekly"></script>
 		<title>Turbidimetri</title>
 	</head>
@@ -65,13 +66,21 @@
 			<button id="visualizzaDati" onclick="LineChartHandler.onNewInterval()">Visualizza</button>
 			<button id="esportaCSV" onclick="lineChartDataDashboard.exportCSVData()">Esporta CSV</button>
 		</div>
+		<div id="notificheDiv" onclick="showNotifiche()"><img src="./img/notification.png" alt="area notifiche" id="notifImg">
+			<div id="allNotifiche"></div>
+		</div>
 		<div id="turbidityLineChartDiv">
 			<svg id="turbidityLineChartSvg" width="1000" height="900"></svg>
 			<div id="map"></div>
 		</div>
-		<div id="lateralAdd" onclick="addTurbidimetro()">aggiungi Turbidimetro +</div>
+		<div id="lateralAdd" class="lateral" onclick="moveLateral(1)">Aggiungi Turbidimetro<img src="./img/add.png" alt="aggiungi turbidimetro"></div>
 		<div>
-			<form id="turbidimeterForm" class="formT">
+		<div id="lateralRm" class="lateral" onclick="moveLateral(2)"> Rimuovi Turbidimetro<img src="./img/remove.png" alt="rimuovi turbidimetro"></div>
+		<div>
+		<div id="lateralMd" class="lateral" onclick="moveLateral(3)"> Modifica Turbidimetro<img src="./img/modify.png" alt="modifica turbidimetro"></div>
+		<div id="addDiv" class="formT">
+		<div id="exitAdd" class="exit" onclick="retLat()">>></div>
+			<form id="turbidimeterForm" >
 				<h2>Aggiungi un Nuovo turbidimetro</h2>
 				<label for="id">id</label><br>
 				<input type="text" id="identificatore" name="identificatore" ><br>
@@ -79,19 +88,21 @@
     			<input type="text" id="latitudine" name="latitudine"><br>
     			<label for="longitudine">Longitudine:</label><br>
     			<input type="text" id="longitudine" name="longitudine" >
-				<button type="submit">Invia</button>
+				<button type="submit" id="addbtn">Invia</button>
 			</form>
 		</div>
-		<div>
-			<form id="removeForm" class="formT1">
+		<div id="rmDiv" class="formT">
+		<div id="exitrm" class="exit" onclick="retLat()">>></div>
+			<form id="removeForm">
 				<h2>Rimuovi un turbidimetro</h2>
 				<label for="id">id</label><br>
 				<input type="text" id="identificatorerm" name="identificatorerm" ><br>
-				<button type="submit">Invia</button>
+				<button type="submit" id="rmbtn">Rimuovi</button>
 			</form>
 		</div>
-		<div>
-			<form id="modifyForm" class="formT2">
+		<div id="mdDiv" class="formT">
+		<div id="exitmd" class="exit" onclick="retLat()">>></div>
+			<form id="modifyForm" >
 				<h2>modifica la posizione di un turbidimetro</h2>
 				<label for="id">id</label><br>
 				<input type="text" id="identificatoremd" name="identificatoremd"><br>
@@ -99,7 +110,7 @@
     			<input type="text" id="latitudinemd" name="latitudinemd"><br>
     			<label for="longitudine">Nuova longitudine:</label><br>
     			<input type="text" id="longitudinemd" name="longitudinemd" >
-				<button type="submit">Invia</button>
+				<button type="submit" id="mdbtn">modifica</button>
 			</form>
 		</div>
 	<script type="text/javascript" src="./js/index.js"></script>

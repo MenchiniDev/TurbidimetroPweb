@@ -55,3 +55,66 @@ function initMap() {
     }
     
     window.initMap = initMap;
+
+
+function retLat()
+{
+  console.log("ecocci");
+  let el = document.getElementById("addDiv");
+  el.style.left="200vh";
+  el.style.transitionDuration="300ms";
+
+  let el1 = document.getElementById("rmDiv");
+  el1.style.left="200vh";
+  el1.style.transitionDuration="300ms";
+
+  let el2 = document.getElementById("mdDiv");
+  el2.style.left="200vh";
+  el2.style.transitionDuration="300ms";
+}
+
+function moveLateral(n)
+{
+  if(n==1)
+  {
+    let el = document.getElementById("addDiv");
+    el.style.left="150vh";
+    el.style.transitionDuration="300ms";
+  }  
+  else if(n==2)
+  {
+    let el = document.getElementById("rmDiv");
+    el.style.left="150vh";
+    el.style.transitionDuration="300ms";
+  }else if(n==3)
+  {
+    let el = document.getElementById("mdDiv");
+    el.style.left="150vh";
+    el.style.transitionDuration="300ms";
+  }
+}
+
+//document.getElementById("lateralAdd").addEventListener("click", moveLateral);
+//document.getElementById("lateralRm").onclick = moveLateral;
+//document.getElementById("lateralMd").onclick = moveLateral;
+
+//document.getElementById("addbtn").onclick = "retLat";
+document.getElementById("addbtn").onclick = retLat;
+
+document.getElementById("mdbtn").onclick = retLat;
+document.getElementById("rmbtn").onclick = retLat;
+window.onclick = function(event) {
+  console.log("ciao");
+  if (event.target == document.getElementById("addDiv")) {
+
+    let el2 = document.getElementById("addDiv");
+    el2.style.left="200px";
+    el2.style.transitionDuration="50ms";
+
+  }
+}
+
+showNotifiche()
+{
+  
+}
