@@ -114,7 +114,11 @@ window.onclick = function(event) {
   }
 }
 
-showNotifiche()
+function showNotifiche()
 {
-  
+  let el = document.getElementById("allNotifiche");
+  el.style.transitionDuration="400ms";
+  el.style.transitionTimingFunction="ease-out";
+  el.style.opacity="1";
+  el.style.marginTop="20px";
 }

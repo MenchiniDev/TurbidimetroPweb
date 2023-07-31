@@ -67,7 +67,11 @@
 			<button id="esportaCSV" onclick="lineChartDataDashboard.exportCSVData()">Esporta CSV</button>
 		</div>
 		<div id="notificheDiv" onclick="showNotifiche()"><img src="./img/notification.png" alt="area notifiche" id="notifImg">
-			<div id="allNotifiche"></div>
+			<div id="allNotifiche">
+				<?php
+				/* recupero tutte le notifiche in ordine crescente di tempo*/
+				?>
+			</div>
 		</div>
 		<div id="turbidityLineChartDiv">
 			<svg id="turbidityLineChartSvg" width="1000" height="900"></svg>

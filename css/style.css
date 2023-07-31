@@ -164,4 +164,14 @@ img
 {
   margin-top: 20;
   margin-right: 20px;
+  float: left;
+}
+#allNotifiche
+{
+  border: 1px solid black;
+  height: 300px;
+  width: 220px;
+  position: fixed;
+  left: 150px;
+  opacity: 0;  
 }
