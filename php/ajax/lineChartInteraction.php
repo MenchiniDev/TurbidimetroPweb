@@ -48,7 +48,7 @@
 		if ($result === null || !$result)
 			return true;
 			
-		return ($result->num_rows <= 0);
+		return true;//($result->num_rows <= 0);
 	}
 	
 	function setEmptyResponse(){

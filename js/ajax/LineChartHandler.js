@@ -24,8 +24,8 @@ LineChartHandler.onAjaxResponse =
 		console.log(response.message);
 		console.log(response.responseCode);
 		if (response.responseCode === LineChartHandler.NO_DATA){
-			console.log(response.message);			
-			//Caricare il grafico vuoto o fare qualcosa di default
+			console.log(response.message);	
+			//messaggio di default a tutto schermo		
 			lineChartDataDashboard.showNoData();
 			return;
 		}

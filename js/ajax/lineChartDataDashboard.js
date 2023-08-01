@@ -147,10 +147,13 @@ lineChartDataDashboard.showIntervalData =
 
 lineChartDataDashboard.showNoData = 
 	function(){
-		document.getElementById("turbidityLineChartSvg").style.display = "none";
-		dataCSV = null;
-		alert("Nessun dato da visualizzare per l'intervallo e il turbdimetro selezionati.");
+		let el = document.getElementById("turbidityLineChartDiv");
 
+		//document.getElementById("turbidityLineChartSvg").style.display = "none";
+		dataCSV = null;
+		el.textContent="nessun dato disponibile per l'arco di tempo ed il turbidimetro selezionati!";
+		el.style.fontFamily="Arial, Helvetica, sans-serif;";
+		el.style.fontSize="20px";
 	}
 	
 //Scarica un file CSV contenente i dati graficati 	

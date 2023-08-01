@@ -1,3 +1,4 @@
+let on = true;
 function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {
       zoom: 10,
@@ -99,7 +100,7 @@ function moveLateral(n)
 //document.getElementById("lateralMd").onclick = moveLateral;
 
 //document.getElementById("addbtn").onclick = "retLat";
-document.getElementById("addbtn").onclick = retLat;
+/*document.getElementById("addbtn").onclick = retLat;
 
 document.getElementById("mdbtn").onclick = retLat;
 document.getElementById("rmbtn").onclick = retLat;
@@ -111,13 +112,30 @@ window.onclick = function(event) {
     el2.style.left="200px";
     el2.style.transitionDuration="50ms";
   }
-}
+}*/
 
 function showNotifiche()
 {
   let el = document.getElementById("allNotifiche");
-  el.style.transitionDuration="400ms";
-  el.style.transitionTimingFunction="ease-out";
-  el.style.opacity="1";
-  el.style.marginTop="20px";
+  if(on)
+  {
+    el.style.transitionDuration="300ms";
+    el.style.transitionTimingFunction="ease-out";
+    el.style.opacity="1";
+    el.style.marginTop="20px";
+    on = false;
+  }else
+  {
+    el.style.opacity="0";
+    on = true;
+  }
+
+  let r = document.getElementById("exitAll");
+  r.style.opacity="1";
+  r.style.top="120px";
+  r.style.transitionDuration="700ms";
+  r.style.transitionTimingFunction="ease-out";
+
+  document.getElementById("notifImg").setAttribute("src","./img/notification.png");
+  console.log("fatto");
 }

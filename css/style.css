@@ -36,11 +36,6 @@ h2,h3
   margin-left: 10px;
 }
 
-hr
-{
-  
-}
-
 #dataGraph {
   margin-top: 20px;
 }
@@ -167,8 +162,11 @@ img
 
 #notifImg
 {
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
+  margin-left: 10px;
+  background-color: rgb(205, 227, 91);
+  border-radius: 10px;
 }
 #notificheDiv
 {
@@ -187,4 +185,13 @@ img
   left: 150px;
   opacity: 0;  
   overflow: scroll;
+}
+
+#exitAll>img
+{
+  position: fixed;
+  left: 380px;
+  top: 120px;
+  background-color: rgb(131, 164, 78);
+  border-radius: 40px;
 }

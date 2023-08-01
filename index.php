@@ -74,9 +74,10 @@
 		<?php
 		if(isset($_SESSION['notifica']))
 		{
-			if($_SESSION['notifica']==true)
+			if($_SESSION['notifica']==true){
 				echo "<img src=\"./img/notifAlert.png\" alt=\"ci sono notifiche\" id=\"notifImg\">";
-			else{
+				$_SESSION['notififa']=false;
+			}else{
 				echo "<img src=\"./img/notification.png\" alt=\"area notifiche\" id=\"notifImg\">";
 				$_SESSION['notifica']=false;
 			}
@@ -86,7 +87,9 @@
 				$_SESSION['notifica']=false;
 		}
 		?>
+				</div>
 			<div id="allNotifiche">
+				<div id="exitAll" onclick="showNotifiche()"><img src="./img/remove.png" alt="esci"></div>
 				<?php
 				global $turbidimeterDataDb;
 				/* recupero tutte le notifiche in ordine crescente di tempo*/
@@ -160,7 +163,6 @@
 			}
 				?>
 			</div>
-		</div>
 		<div id="turbidityLineChartDiv">
 			<svg id="turbidityLineChartSvg" width="1000" height="900"></svg>
 			<div id="map"></div>
