@@ -317,10 +317,11 @@ CREATE TABLE `Turbidimeters` ( /*seguo il formato gradi-primi-secondi della posi
   
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `Notifiche` (
+CREATE TABLE `Notifiche` ( /*tipo = 'ins' || 'del' || 'mod' || 'newdata' || ... */
   `Tipo` varchar(500) default null,
   `latitudine` float8 default null,
   `longitudine` float8 default null,
-  `IdTurbidimetro` int(11) default null
+  `IdTurbidimetro` int(11) default null,
+  `Timestamp` timestamp
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

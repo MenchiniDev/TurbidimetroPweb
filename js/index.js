@@ -45,7 +45,7 @@ addT.addEventListener("submit",(e)=>
     method: 'POST',
     body: formData
   })
-.then(response => response.json())
+.then(response => response.json()) /*setto nel php la variabile $_SESSION['notifica']=true; */
 .then(data => {
     if(!data['result']){
       console.log("errore");
@@ -76,6 +76,7 @@ remT.addEventListener("submit",(e)=>
       console.log("errore");
     }
     else{
+      window.location.replace("index.php");
       let r = document.getElementById("notifImg");
       r.setAttribute("src","./img/notifAlert.png");
     }
@@ -106,6 +107,7 @@ modT.addEventListener("submit",(e)=>
       console.log("errore");
     }
     else{
+      window.location.replace("index.php");
       let r = document.getElementById("notifImg");
       r.setAttribute("src","./img/notifAlert.png");
     }

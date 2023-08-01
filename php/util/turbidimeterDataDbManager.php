@@ -35,6 +35,8 @@
 	function isOpen() {
 		try {
 			// Ottieni lo stato della connessione usando l'attributo PDO::ATTR_CONNECTION_STATUS
+            if($this->db == null)
+                return false;
 			$status = $this->db->getAttribute(PDO::ATTR_CONNECTION_STATUS);
 	
 			// Verifica se lo stato indica una connessione attiva
@@ -46,7 +48,7 @@
 	}
 	function openConnection()
     {
-        echo $this->host . $this->name . $this->username.  $this->password;
+        //echo $this->host . $this->name . $this->username.  $this->password;
         $dsn = "mysql:host={$this->host};dbname={$this->name};charset=utf8mb4";
 
         $options = [

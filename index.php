@@ -23,6 +23,9 @@
 	<body onLoad="LineChartHandler.onNewInterval()">
 		<header>
 			<a>Dati Turbidimetri</a>
+			<?php
+			session_start();
+			?>
 		</header>
 		<div id="dataSubmissionDiv">
 			<label for="inizioIntervallo">Inizio Intervallo:</label>
@@ -38,7 +41,7 @@
 					try
 					{
 						$res = getTurbidimeters();
-						while ($row = $stmt->fetch()) {
+						while ($row = $res->fetch()) {
 							echo'<option value=' .$row['turbidimeterID'] . '>' .$row['turbidimeterID'] . '</option>';
 						}
 						
@@ -57,6 +60,7 @@
 							echo'<option value=' .$row['turbidimeterID'] . '>' .$row['turbidimeterID'] . '</option>';
 						}
 					}
+					$turbidimeterDataDb->closeConnection();
 				}catch (PDOException $e) {	
 					echo "<option>Errore: " . $e->getMessage() . "</option>";
 				} // poi da rimuovere
@@ -66,10 +70,94 @@
 			<button id="visualizzaDati" onclick="LineChartHandler.onNewInterval()">Visualizza</button>
 			<button id="esportaCSV" onclick="lineChartDataDashboard.exportCSVData()">Esporta CSV</button>
 		</div>
-		<div id="notificheDiv" onclick="showNotifiche()"><img src="./img/notification.png" alt="area notifiche" id="notifImg">
+		<div id="notificheDiv" onclick="showNotifiche()">
+		<?php
+		if(isset($_SESSION['notifica']))
+		{
+			if($_SESSION['notifica']==true)
+				echo "<img src=\"./img/notifAlert.png\" alt=\"ci sono notifiche\" id=\"notifImg\">";
+			else{
+				echo "<img src=\"./img/notification.png\" alt=\"area notifiche\" id=\"notifImg\">";
+				$_SESSION['notifica']=false;
+			}
+		}else
+		{
+			echo "<img src=\"./img/notification.png\" alt=\"area notifiche\" id=\"notifImg\">";
+				$_SESSION['notifica']=false;
+		}
+		?>
 			<div id="allNotifiche">
 				<?php
+				global $turbidimeterDataDb;
 				/* recupero tutte le notifiche in ordine crescente di tempo*/
+				//$turbidimeterDataDb->openConnection();
+				if($turbidimeterDataDb->isOpen())
+				{
+					try
+					{
+						$res = getNotifications();
+						echo "connessione gia aperta";
+						while ($row = $stmt->fetch()) {
+							if($row['Tipo']=='ins')
+							{
+								echo '<h3> il turbidimetro '.$row['IdTurbidimetro'] . "è stato inserito correttamente" . '<h3>';
+								echo '<hr>';
+							} else if($row['Tipo']=='del')
+							{
+								echo '<h3> il turbidimetro '.$row['IdTurbidimetro'] . "è stato rimosso correttamente" . '<h3>';
+								echo '<hr>';
+							}else if($row['Tipo']=='mod')
+							{
+								echo '<h3> il turbidimetro '.$row['IdTurbidimetro'] . "è stato modificato con successo," 
+								."<b>nuove coordinate</b>: latitudine: ". $row['latitudine'] . " longitudine: ".$row['longitudine'] . '</h3>';
+								echo '<hr>';
+
+							}else if($row['Tipo']=='newdata')
+							{
+								echo '<h3> il turbidimetro '.$row['IdTurbidimetro'] . "ha correttamente inviato nuovi dati" . '<h3>';
+								echo '<hr>';
+
+							}
+						}
+						
+					}catch (PDOException $e) {
+						
+						echo "Errore: " . $e->getMessage();
+					} // poi da rimuovere
+				}else{
+					$turbidimeterDataDb->openConnection();
+					try
+					{
+						$res = getNotifications();
+						while ($row = $res->fetch()) {
+							if($row['Tipo']=='ins')
+							{
+								echo "<h2>".$row['Timestamp']."</h2>";
+								echo '<h3> il turbidimetro '.$row['IdTurbidimetro'] . " è stato inserito correttamente" . '<h3>';
+								echo '<hr>';
+							} else if($row['Tipo']=='del')
+							{
+								echo "<h2>".$row['Timestamp']."</h2>";
+								echo '<h3> il turbidimetro '.$row['IdTurbidimetro'] . " è stato rimosso correttamente" . '<h3>';
+								echo '<hr>';
+							}else if($row['Tipo']=='mod')
+							{
+								echo "<h2>".$row['Timestamp']."</h2>";
+								echo '<h3> il turbidimetro '.$row['IdTurbidimetro'] . " è stato modificato con successo," 
+								."<b>nuove coordinate</b>: latitudine: ". $row['latitudine'] . " longitudine: ".$row['longitudine'] . '</h3>';
+								echo '<hr>';
+
+							}else if($row['Tipo']=='newdata')
+							{
+								echo "<h2>".$row['Timestamp']."</h2>";
+								echo '<h3> il turbidimetro '.$row['IdTurbidimetro'] . "ha correttamente inviato nuovi dati" . '<h3>';
+								echo '<hr>';
+							}
+					}
+				}catch (PDOException $e) {	
+					echo "<option>Errore: " . $e->getMessage() . "</option>";
+				} // poi da rimuovere
+			}
 				?>
 			</div>
 		</div>

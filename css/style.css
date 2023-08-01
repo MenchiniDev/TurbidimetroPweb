@@ -165,13 +165,17 @@ img
   margin-top: 20;
   margin-right: 20px;
   float: left;
+  overflow: auto;
 }
 #allNotifiche
 {
-  border: 1px solid black;
-  height: 300px;
+  border: 1px solid rgb(117, 153, 54);
+  border-radius: 10px;
+  background-color: yellowgreen;
+  max-width: 300px;
   width: 220px;
   position: fixed;
   left: 150px;
   opacity: 0;  
+  overflow: auto;
 }

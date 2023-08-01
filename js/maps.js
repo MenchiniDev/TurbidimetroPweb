@@ -110,7 +110,6 @@ window.onclick = function(event) {
     let el2 = document.getElementById("addDiv");
     el2.style.left="200px";
     el2.style.transitionDuration="50ms";
-
   }
 }
 
