@@ -31,6 +31,16 @@ select {
   margin-right: 10px;
 }
 
+h2,h3
+{
+  margin-left: 10px;
+}
+
+hr
+{
+  
+}
+
 #dataGraph {
   margin-top: 20px;
 }
@@ -165,7 +175,6 @@ img
   margin-top: 20;
   margin-right: 20px;
   float: left;
-  overflow: auto;
 }
 #allNotifiche
 {
@@ -173,9 +182,9 @@ img
   border-radius: 10px;
   background-color: yellowgreen;
   max-width: 300px;
-  width: 220px;
+  max-height: 500px;
   position: fixed;
   left: 150px;
   opacity: 0;  
-  overflow: auto;
+  overflow: scroll;
 }
