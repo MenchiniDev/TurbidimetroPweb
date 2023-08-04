@@ -17,7 +17,7 @@
 		<script type="text/javascript" src="./js/ajax/LineChartHandler.js"></script>
 		<script type="text/javascript" src="./js/ajax/lineChartDataDashboard.js"></script>
 		<script src="./js/maps.js"></script>
-    	<script src="https://maps.googleapis.com/maps/api/js?key=INSERT_YOUR_API_KEY&callback=initMap&v=weekly"></script>
+    	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=INSERT_YOUR_API_KEY&callback=initMap&v=weekly"></script> -->
 		<title>Turbidimetri</title>
 	</head>
 	<body onLoad="LineChartHandler.onNewInterval()">
@@ -60,7 +60,6 @@
 							echo'<option value=' .$row['turbidimeterID'] . '>' .$row['turbidimeterID'] . '</option>';
 						}
 					}
-					$turbidimeterDataDb->closeConnection();
 				}catch (PDOException $e) {	
 					echo "<option>Errore: " . $e->getMessage() . "</option>";
 				} // poi da rimuovere

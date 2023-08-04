@@ -7,7 +7,7 @@
 
 	$response = new AjaxResponse();
 	
-	if (!isset($_GET['turbidimeterId']) ||!isset($_GET['beginningDate']) || !isset($_GET['endDate'])){
+	if (!isset($_GET['turbidimeterId']) || !isset($_GET['beginningDate']) || !isset($_GET['endDate'])){
 		echo json_encode($response);
 		return;
 	}		
@@ -48,7 +48,7 @@
 		if ($result === null || !$result)
 			return true;
 			
-		return true;//($result->num_rows <= 0);
+		return false;//($result->num_rows <= 0); ???
 	}
 	
 	function setEmptyResponse(){
@@ -66,7 +66,7 @@
 		$response = new AjaxResponse("0", $message);
 			
 		$index = 0;
-		while ($row = $result->fetch_assoc()){
+		while ($row = $result->fetch()){
 			
 			$sensorData = new SensorData();
 			

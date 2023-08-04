@@ -18,7 +18,6 @@
 					   .'WHERE turbidimeterID=' . $turbidimeterId . ' AND timestamp>=\'' . $beginningDate . '\' AND timestamp<=\'' . $endDate . '\'';
 		//controllare come controllare date antecedenti/post in mySQL
 		$result = $turbidimeterDataDb->performQuery($queryText);
-		
 		$turbidimeterDataDb->closeConnection();
 		return $result;
 	}

@@ -32,7 +32,7 @@ lineChartDataDashboard.showIntervalData =
 		console.log(lineChartDataDashboard.beginningDate);
 		console.log(lineChartDataDashboard.endDate);
 		
-		var svg = document.getElementById("turbidityLineChartSvg");
+		svg = document.getElementById("turbidityLineChartSvg");
 				
 		while(svg.firstChild)
 			svg.removeChild(svg.firstChild);
@@ -60,7 +60,7 @@ lineChartDataDashboard.showIntervalData =
 		 
 
         // Step 3
-        var svg = d3.select("#turbidityLineChartSvg"),
+        svg = d3.select("#turbidityLineChartSvg"),
 			margin = 170,
 			marginTop = 20,
 			marginBottom = 30,

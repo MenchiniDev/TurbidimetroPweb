@@ -2,7 +2,7 @@ function AjaxManager(){} //File in cui vengono generate le richieste Ajax
 
 AjaxManager.getAjaxObject = 
 	function(){
-		var xmlHttp = null;
+		let xmlHttp = null;
 		try { 
 			xmlHttp = new XMLHttpRequest(); 
 		} catch (e) {
@@ -21,7 +21,7 @@ AjaxManager.getAjaxObject =
 
 AjaxManager.performAjaxRequest = 
 	function(method, url, isAsync, dataToSend, responseFunction){
-		var xmlHttp = AjaxManager.getAjaxObject();
+		let xmlHttp = AjaxManager.getAjaxObject();
 		if (xmlHttp === null){
 			window.alert("Your browser does not support AJAX!"); // set error function
 			return;
@@ -29,9 +29,12 @@ AjaxManager.performAjaxRequest =
 	
 		xmlHttp.open(method, url, isAsync); 
 		xmlHttp.onreadystatechange = function (){
-			if (xmlHttp.readyState == 4){
-				var data = JSON.parse(xmlHttp.responseText);
+			if (xmlHttp.readyState == XMLHttpRequest.DONE){
+				console.log("è andata a buon fine in performAjaxRequest");
+				
+				let data = JSON.parse(xmlHttp.responseText);
 				responseFunction(data);
+				console.log(data);
 			}
 		}
 		xmlHttp.send(dataToSend);
