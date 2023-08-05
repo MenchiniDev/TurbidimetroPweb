@@ -11,6 +11,7 @@ LineChartHandler.NO_DATA = "-1";
 LineChartHandler.onNewInterval = 
 	function() {
 		let queryString = "?turbidimeterId=" + document.getElementById("turbidimetri").value + "&beginningDate=" + document.getElementById("inizioIntervallo").value + "&endDate=" + document.getElementById("fineIntervallo").value;
+		console.log(queryString);
 		let url = LineChartHandler.URL_REQUEST + queryString;
 		let responseFunction = LineChartHandler.onAjaxResponse;
 	
@@ -21,19 +22,12 @@ LineChartHandler.onNewInterval =
 
 LineChartHandler.onAjaxResponse = 
 	function(response){ //valore data parsato dalla onreadystatechange
-		console.log("onAjaxResponse dati ricevuti post richiesta");
-		console.log(response.message);
-		console.log(response.responseCode);
-		if (response.responseCode === LineChartHandler.NO_DATA){
-			//console.log(response.message);	
-			console.log("non è andata a buon fine");
-			//messaggio di default a tutto schermo		
+		if (response.responseCode === LineChartHandler.NO_DATA){	
 			lineChartDataDashboard.showNoData();
 			return;
 		}
 		
 		if (response.responseCode === LineChartHandler.SUCCESS_RESPONSE){
-			console.log("onAjaxResponse Data ok");
 			lineChartDataDashboard.showIntervalData(response.data);
 		}
 	}

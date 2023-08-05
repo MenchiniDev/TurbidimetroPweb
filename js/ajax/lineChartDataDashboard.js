@@ -10,6 +10,12 @@ lineChartDataDashboard.endDate = null;
 lineChartDataDashboard.showIntervalData =
 	function(data){
 		var dataset1 = [];
+		
+		if(data == null){
+			window.alert("nessun dato per il turbidimetro e arco di tempo selezionato!");
+			return;
+		}
+
 		for(var i = 0, j = 0; i < data.length; i++, j++){
 			//Considerare che per ogni timestamp ho due valori di due sensori diversi
 			if(data[i].timestamp == data[i+1].timestamp){
@@ -28,9 +34,6 @@ lineChartDataDashboard.showIntervalData =
 		lineChartDataDashboard.turbidimeterID = document.getElementById("turbidimetri").value;
 		lineChartDataDashboard.beginningDate = document.getElementById("inizioIntervallo").value;
 		lineChartDataDashboard.endDate = document.getElementById("fineIntervallo").value;
-		console.log(dataset1);
-		console.log(lineChartDataDashboard.beginningDate);
-		console.log(lineChartDataDashboard.endDate);
 		
 		svg = document.getElementById("turbidityLineChartSvg");
 				
@@ -47,16 +50,6 @@ lineChartDataDashboard.showIntervalData =
 		
 		const X = dataset1.map(d => d.date);
 		const Y = dataset1.map(d => d.value);
-		
-		console.log(dataset1);
-		console.log(X);
-		console.log(d3.extent(X));
-		console.log(d3.min(dataset1));
-		console.log(d3.max(dataset1));
-		console.log(new Date(d3.min(X)));
-		console.log(new Date(d3.max(X)));
-		console.log(d3.min(Y));
-		console.log(d3.max(Y));
 		 
 
         // Step 3
@@ -87,7 +80,7 @@ lineChartDataDashboard.showIntervalData =
         .style('font-family', 'Helvetica')
         .style('font-size', 24)
 	.style('font-weight', 'bold')
-        .text('Torbidità');
+        .text('Torbidità rilevata dal turbidimetro n.' + document.getElementById("turbidimetri").value);
         
         // X label
         /*svg.append('text')

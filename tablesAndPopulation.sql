@@ -317,6 +317,13 @@ CREATE TABLE `Turbidimeters` ( /*seguo il formato gradi-primi-secondi della posi
   
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+insert into turbidimeters value
+(1,40.000,20.000),
+(2,10.000,10.000),
+(3,10.000,10.000),
+(5,10.000,10.000),
+(7,10.000,10.000);
+
 CREATE TABLE `Notifiche` ( /*tipo = 'ins' || 'del' || 'mod' || 'newdata' || ... */
   `Tipo` varchar(500) default null,
   `latitudine` float8 default null,
@@ -324,4 +331,5 @@ CREATE TABLE `Notifiche` ( /*tipo = 'ins' || 'del' || 'mod' || 'newdata' || ... 
   `IdTurbidimetro` int(11) default null,
   `Timestamp` timestamp
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
